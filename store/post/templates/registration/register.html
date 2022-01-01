@@ -1,0 +1,16 @@
+{% extends "class_base.html" %}
+{% block content %}
+
+{% if  form.errors %}
+<p>نام کاربری و رمز عبور درست نیست </p>
+{% endif %}
+
+<form action="{%url 'register' %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button name="submit" >ثبت نام</button>
+    <input type="hidden" name="next" value="{% url 'posts' %}">
+</form>
+
+
+{% endblock content %}

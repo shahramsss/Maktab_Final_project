@@ -1,0 +1,23 @@
+{% extends "class_base.html" %}
+{% block content %}
+    
+
+    <div class="container    mt-1">
+
+          <a class='btn btn-primary mb-2' href="{% url 'add_category' %}"> دسته بندی جدید ...</a>
+
+        <p>دسته بندی ها :</p>
+
+        {% for category in categorys %}
+        
+        <a class="btn btn-info mb-1  "  href="{% url 'filter_posts' category.title %}">{{category}}</a>
+        <a class="btn btn-warning mb-1  "  href="{% url 'edit_category' category_id=category.id %}">ویرایش</a>
+        <a class="btn btn-danger mb-1  "  href="{% url 'delete_category' category_id=category.id %}">حذف</a>
+
+        <br>
+
+        {% endfor %}
+
+    </div>
+{% endblock content %}
+

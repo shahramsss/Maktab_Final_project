@@ -1,0 +1,16 @@
+{% extends "class_base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+ <form  method="post">
+    {% csrf_token %}
+    
+
+
+                {{ form|crispy }}
+    <button name="submit" >ورود</button>
+    <input type="hidden" value="login">
+</form> 
+
+
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends "class_base.html" %}
+{% block content %}
+    
+    <div class="container border border-dark rounded mt-1">
+
+        {% for post in posts%}   
+        <div class="container border border-dark rounded mt-1">
+           
+        <p class="h5 container   m-1 ">{{post.id}}</p>
+        <p class="h5 container   m-1 ">{{post.title}}</p>
+        <p class="h5 container   m-1">{{post.description}}</p>
+        <p class="h5 container   m-1">{{post.short_description}}</p>
+        <p class="h5 container   m-1">{{post.writer}}</p>
+        <p class="h5 container   m-1">{{post_category}}</p>
+        <!-- <a class="h5 container   m-1 text-primary"  href="{% url 'detail' post.id %}">detail</a> -->
+        <a class="h5 container   m-1 text-primary"  href="{% url 'detail' post.slug %}">detail</a>
+        </div>
+        <br>
+
+        {% endfor %}
+    </div>
+    
+{% endblock content %}

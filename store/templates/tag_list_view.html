@@ -1,0 +1,20 @@
+{% extends "class_base.html" %}
+{% block content %}
+
+<div class="container  mt-1">
+    <a class='btn btn-primary m-2' href="{% url 'add_tag' %}"> تگ جدید ...</a>
+
+    <ul class="navbar-nav">
+        {% for tag in tags%}
+
+        <li class="nav-item"> <a class="btn btn-info mb-1  " href="{% url 'tag_filter_post' tag.title %}">{{tag.title}}</a>
+            <a class="btn btn-warning mb-1  " href="{% url 'edit_tag' tag_id=tag.id %}">ویرایش</a>
+            <a class="btn btn-danger mb-1  " href="{% url 'delete_tag' tag_id=tag.id %}">حذف</a>
+        </li>
+
+
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends "class_base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}    
+    <div class="container  mt-1">
+        <div class="col-md-12 my-3">
+            <form action="{% url 'delete_category' category_id=category.id %}" method="post">
+                {% csrf_token %}
+                
+                
+                <p>آیا می خواهید <a href="#" class="text-danger">{{category.title}}</a> پاک شود ؟</p>
+                <input type="submit" value="برو">
+                <a href="{% url 'categorys'%}">برگشت به صفحه تگ ها !</a>
+
+            </form>
+
+        </div>
+
+       
+        
+    </div>
+    
+{% endblock content %}

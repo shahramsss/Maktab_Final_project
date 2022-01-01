@@ -1,0 +1,85 @@
+{% extends "class_base.html" %}
+{% block content %}
+{% load static %}
+
+<div class="container  mt-1">
+{% if posts %}
+
+
+
+  
+
+     {% comment %} {% for post in posts%}
+    <div class="container border border-dark rounded mt-1">
+
+        <p class="h3 mb-2    m-1 ">{{post.title}}</p>
+        <p class="h5    m-1">{{post.short_description}}</p>
+        <p class="h5    m-1">نویسنده : {{post.writer}}</p>
+        <!-- <a class="h5 container   m-1 text-primary"  href="{% url 'detail' post.id %}">detail</a> -->
+        <a class="h5    m-1 btn btn-primary" href="{% url 'detail' post.id %}">جزئیات</a>
+    </div>
+    <br>
+
+    {% endfor %} {% endcomment %}
+    {% comment %} <div class="card-columns">
+        {% for post in posts %}
+        <div class="card m-2" style="width: 12rem;">
+            <img class="card-img-top" src="{{post.image.url}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{post.title}}</h5>
+                <p class="card-text">{{post.short_description}}</p>
+                <a href="{% url 'detail' post.id %}" class="btn btn-primary">جزئیات</a>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div> {% endcomment %}
+
+    {% for post in posts %}
+    <div class="card bg-dark text-white mb-4">
+    
+    {% if post.image %}
+        <img class="card-img" src="{{post.image.url}}" alt="Card image">
+    
+    {% else %}
+        <img class="card-img" src="{% static 'images/not.png'%}" alt="Card image">
+
+    {% endif %}
+        <div class="card-img-overlay">
+            <h5 class="card-title">{{post.title}}</h5>
+            <p class="card-text">{{post.short_description}}</p>
+            {% for t in post.tag.all  %}
+            
+            <p class="card-text">image :{{t}}</p>
+            {% endfor %}
+            <a href="{% url 'detail' post.id %}" class="btn btn-primary">جزئیات</a>
+
+        </div>
+    </div>
+
+    {% endfor %}
+    {% comment %} <div class="card-deck">
+    {% for post in posts %}
+        <div class="card">
+          <img class="card-img-top" src="{{post.image.url}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{post.short_description}}</h5>
+          </div>
+          <div class="card-footer">
+            <a href="{% url 'detail' post.id %}" class="btn btn-primary">جزئیات</a>
+
+          </div>
+        </div>
+
+    {% endfor %}
+    </div> {% endcomment %}
+{% else %}
+
+<div class="alert alert-primary" role="alert">
+    <p>پستی وجود ندارد!</p>
+  </div>
+
+{% endif %}
+</div>
+
+{% endblock content %}

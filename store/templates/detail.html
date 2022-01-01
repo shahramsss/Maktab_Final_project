@@ -1,0 +1,54 @@
+{% extends "class_base.html" %}
+{% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<div class="container ">
+    {% if post.image %}
+
+    <img src="{{post.image.url}}" class="img-thumbnail mt-2" alt="Responsive image">
+    {% else %}
+    <img class="img-thumbnail mt-2" src="{% static 'images/not.png'%}" alt="Card image">
+
+    {% endif %}
+    <p class="h5 rounded m-1"> عنوان : {{post.title}}</p>
+    <p class="h6 rounded m-1"> توضیح : {{post.short_description}}</p>
+    <p class="h6 rounded m-1"> توضیحات : {{post.description}}</p>
+    <p class="h6 rounded m-1">نویسنده : {{post.writer}}</p>
+    {% for category in post.category.all %}
+    <p class="h6 rounded m-1"> دسته بندی : {{category}}</p>
+    {% endfor %}
+    {% for t in post.tag.all %}
+    <p class="h6 rounded m-1"> تگ : {{t}}</p>
+    {% endfor %}
+
+
+    <br>
+
+    <P class="h6   m-1">کامنت ها : </P>
+    <div class="container border rounded m-1">
+
+
+        {% for comment in commnets %}
+        <div class="container border rounded m-1">
+            <p class="h6  container"> {{comment.title}} : </p>
+            <p class="h6 container"> {{comment.text}}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col-md-12 my-3">
+        <form method="post" action="{% url 'detail' post_id=post.id%}">
+            {% csrf_token %}
+            
+
+
+                {{ form|crispy }}
+
+            <button type="submit" value="">ثبت نظر</button>
+
+
+        </form>
+
+    </div>
+</div>
+{% endblock content %}

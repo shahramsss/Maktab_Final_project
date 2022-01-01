@@ -1,0 +1,15 @@
+{% extends "class_base.html" %}
+{% block content %}
+    
+
+
+    <div class="container  mt-1">
+    
+    {% for post in posts  %}
+       <p> {{post}}</P>
+    
+    {% endfor %}
+    
+    </div>
+    
+{% endblock content %}

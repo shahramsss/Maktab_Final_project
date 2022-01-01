@@ -1,0 +1,26 @@
+{% extends "class_base.html" %}
+{% block content %}
+    
+
+    <div class="container border border-dark rounded mt-1">
+        <p class="h3 container border border-dark rounded m-1"> title : {{post.title}}</p>
+        <p class="h3 container border border-dark rounded m-1"> description : {{post.description}}</p>
+        <p class="h3 container border border-dark rounded m-1"> short_description : {{post.short_description}}</p>
+        <p class="h3 container border border-dark rounded m-1">slug : {{post.slug}}</p>
+        <p class="h3 container border border-dark rounded m-1">author : {{post.writer}}</p>
+        <p class="h3 container border border-dark rounded m-1">image address : {{post.image}}</p>
+        {% for category in post.category.all %}
+        <p class="h3 container border border-dark rounded m-1"> category : {{category}}</p>
+        {% endfor %}
+        {% comment %}
+        <hr>
+        {% for category in post_category %}
+        <p class="h3 container border border-dark rounded m-1">{{category.title }} ,</p>
+
+        {% endfor %} {% endcomment %}
+
+        <br>
+
+        
+    </div>
+{% endblock content %}
