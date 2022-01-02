@@ -36,7 +36,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     writer = models. ForeignKey(User, on_delete=models.DO_NOTHING)
-    category = models.ManyToManyField(Category, null=True ,blank=True)
+    category = models.ManyToManyField(Category)
     slug = models.SlugField(unique=True, null=False)
     tag = models.ManyToManyField(Tag)
 

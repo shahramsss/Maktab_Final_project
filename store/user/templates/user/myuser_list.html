@@ -1,0 +1,12 @@
+{% extends "store_base.html" %}
+{% block content %}
+<div class="container border border-dark rounded">
+    {% for user in object_list %}
+    <p> {{user.first_name}}</p>
+    <p> {{user.last_name}}</p>
+    <p>{{user.phone}}</p>
+    <p> {{user.address}}</p>
+    <p>{{user.city}}</p>
+    {% endfor %}
+</div>
+{% endblock content %}
