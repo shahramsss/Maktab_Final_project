@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="container  " , align="right">
+<h3 class="mb-3">ثبت محصول </h3>
+<form enctype="multipart/form-data" method="post" action="">
+    {% csrf_token %}
+    {% comment %} {{ form.as_p }} {% endcomment %}
+    {{form|crispy}}
+    <button type="submit" class="btn btn-primary mt-3">ثبت محصول</button>
+</form>
+</div>
+{% endblock content %}

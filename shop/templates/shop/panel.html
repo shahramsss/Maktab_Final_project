@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="d-flex  justify-content-between">
+<p class="h4" style="text-align:right">
+
+فروشگاه: {{shops.title}} 
+</p>
+{% if  shops%}
+
+
+
+{% if shops.is_active %}
+<a href="{% url 'shop:productregister' %}" class="btn btn-primary">ثبت محصول</a>
+<a href="{% url 'shop:shopdelete' shops.id %}" class="btn btn-danger">حذف فروشگاه</a>
+{% else %}
+<a href="{% url 'shop:shopregister' %}" class="btn btn-primary">ثبت فروشگاه</a>
+{% endif %}{% endif %}
+</div>
+<hr>
+<p class="h4" style="text-align:right">محصولات</p>
+<table class="table" , style="text-align:center">
+    <thead>
+        <tr>
+            <th>عنوان</th>
+            <th>دسته بندی </th>
+            <th>قیمت</th>
+            <th>وضعیت</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{product.title}}</td>
+            <td>{{product.category}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.is_active}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table> {% endblock content %}

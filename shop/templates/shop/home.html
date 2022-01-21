@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p class="h3" style="text-align:right">فروشگاه ها </p>
+<table class="table" , style="text-align:center">
+    <thead>
+        <tr>
+            <th>عنوان</th>
+            <th>نوع</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for shop in shops %}
+        <tr>
+            <td>{{shop.title}}</td>
+            <td>{{shop.type}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock content %}
