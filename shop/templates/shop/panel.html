@@ -7,15 +7,16 @@
 فروشگاه: {{shops.title}} 
 </p>
 {% if  shops%}
-
-
-
 {% if shops.is_active %}
 <a href="{% url 'shop:productregister' %}" class="btn btn-primary">ثبت محصول</a>
+<a href="{% url 'shop:shopupdate' shops.id %}" class="btn btn-warning">ویرایش فروشگاه</a>
 <a href="{% url 'shop:shopdelete' shops.id %}" class="btn btn-danger">حذف فروشگاه</a>
+{% endif %}
 {% else %}
 <a href="{% url 'shop:shopregister' %}" class="btn btn-primary">ثبت فروشگاه</a>
-{% endif %}{% endif %}
+
+
+{% endif %}
 </div>
 <hr>
 <p class="h4" style="text-align:right">محصولات</p>
@@ -26,15 +27,19 @@
             <th>دسته بندی </th>
             <th>قیمت</th>
             <th>وضعیت</th>
+            <th>ویرایش</th>
+            <th>حذف</th>
         </tr>
     </thead>
     <tbody>
         {% for product in products %}
         <tr>
             <td>{{product.title}}</td>
-            <td>{{product.category}}</td>
+            <td>{{product.categoy.title}}</td>
             <td>{{product.price}}</td>
-            <td>{{product.is_active}}</td>
+            <td><a href="{% url 'shop:productstate' product.id %}" class="btn btn-info" >{{product.is_active}}</a></td>
+            <td><a href="{% url 'shop:productupdate' product.id %}" class="btn btn-warning" >ویرایش</a></td>
+            <td><a href="{% url 'shop:productdelete' product.id %}" class="btn btn-danger" >حذف</a></td>
         </tr>
         {% endfor %}
     </tbody>

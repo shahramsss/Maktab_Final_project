@@ -8,15 +8,6 @@ class ProductRegisterForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ['title', 'categoy','price','description','stock', 'primary_image','image_1','image_2','image_3']
-        # fields = '__all__'
-        # widgets = {
-        #     'price': forms.NumberInput(attrs={'class':'w3-input w3-border'}),
-        #     'stock': forms.NumberInput(attrs={'class':'w3-input w3-border'}),
-        #     'primary_image': forms.FileInput(attrs={'class':'w3-input w3-border'}),
-        #     'image_1': forms.FileInput(attrs={'class':'w3-input w3-border'}),
-        #     'image_2': forms.FileInput(attrs={'class':'w3-input w3-border'}),
-        #     'image_3': forms.FileInput(attrs={'class':'w3-input w3-border'}),
-        # }
     
 
 class ShopRegisterForm(forms.ModelForm):
@@ -41,3 +32,18 @@ class DeleteShopForm(forms.ModelForm):
         if commit:
             isactive.save()
             return isactive
+
+class ProductStateForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['is_active']
+
+    # def save(self, commit=True):
+    #     isactive = super().save(commit=False)
+    #     if isactive.is_active == True:
+    #         isactive.is_active = False
+    #     else:
+    #         isactive.is_active = True
+    #     if commit:
+    #         isactive.save()
+    #         return isactive

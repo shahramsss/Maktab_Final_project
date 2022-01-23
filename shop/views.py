@@ -18,7 +18,6 @@ def home(request):
     shops = Shop.objects.filter(user=request.user.id)
     return render(request, "shop/home.html", {'shops': shops})
 
-
 class PanelView(View):
     def get(self, request):
         try:
@@ -29,11 +28,11 @@ class PanelView(View):
             messages.warning(request, "you have not active shop",)
             return render(request, "shop/panel.html",)
 
-class ShopRegister(CreateView):
-    model = Shop
-    form_class = ShopRegisterForm
-    template_name = "shop/shop_register.html"
-    success_url = reverse_lazy("shop:panel")
+# class ShopRegister(CreateView):
+#     model = Shop
+#     form_class = ShopRegisterForm
+#     template_name = "shop/shop_register.html"
+#     success_url = reverse_lazy("shop:panel")
 
 class ProductRegister(CreateView):
     model = Product
@@ -72,9 +71,32 @@ class ShopRegister(View):
             messages.success(request, "your shop is created",)
             return redirect(reverse("shop:panel"))
 
-
-class DeleteShop(UpdateView):
+class ShopDelete(UpdateView):
     form_class = DeleteShopForm
     model = Shop
     template_name = 'shop/shop_delete.html'
     success_url = reverse_lazy('shop:home')
+
+class ShopUpdate(UpdateView):
+    model = Shop
+    form_class =  ShopRegisterForm
+    template_name = "shop/shop_update.html"
+    success_url = reverse_lazy('shop:panel')
+
+class ProductUpdate(UpdateView):
+    model = Product
+    form_class =  ProductRegisterForm
+    template_name = "shop/product_update.html"
+    success_url = reverse_lazy('shop:panel')
+
+class ProductDelete(DeleteView):
+    
+    model = Product
+    template_name = 'shop/product_delete.html'
+    success_url = reverse_lazy('shop:panel')
+
+class ProductState(UpdateView):
+    model = Product
+    form_class =  ProductStateForm
+    template_name = "shop/product_update_state.html"
+    success_url = reverse_lazy('shop:panel')

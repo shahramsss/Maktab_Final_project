@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post" action="" , align='right'>
+    {% csrf_token %}
+    
+    <p> آیا می خواهید محصول <a href="#" class="text-danger">{{object.title}}</a> پاک شود ؟</p>
+    
+    <button type="submit" class="btn btn-danger">حذف فروشگاه</button>
+    <a class="btn btn-primary" href="{% url 'shop:panel'%}">خیر</a>
+</form>
+
+
+{% endblock content %}

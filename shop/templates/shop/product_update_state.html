@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+<form method="post" action="" , align='right'>
+    {% csrf_token %}
+    
+    <p>  تغییر وضعیت محصول: <a href="#" class="text-danger">{{object.title}}</a>  </p>
+    
+  
+    {% csrf_token %}
+    {% comment %} {{ form.as_p }} {% endcomment %}
+    {{form|crispy}}
+    <button type="submit" class="btn btn-warning mt-3">ویرایش محصول</button>
+</form>
+
+
+
+{% endblock content %}
