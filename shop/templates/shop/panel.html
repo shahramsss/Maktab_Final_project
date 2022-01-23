@@ -8,6 +8,7 @@
 </p>
 {% if  shops%}
 {% if shops.is_active %}
+<a href="{% url 'shop:orderlist' %}" class="btn btn-success">سفارشات</a>
 <a href="{% url 'shop:productregister' %}" class="btn btn-primary">ثبت محصول</a>
 <a href="{% url 'shop:shopupdate' shops.id %}" class="btn btn-warning">ویرایش فروشگاه</a>
 <a href="{% url 'shop:shopdelete' shops.id %}" class="btn btn-danger">حذف فروشگاه</a>

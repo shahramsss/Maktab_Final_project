@@ -1,9 +1,9 @@
-from ast import Delete
+from ast import Delete, List
 from itertools import product
 from pyexpat import model
 from django.db import models
 from django.shortcuts import render
-from django.views.generic import View, CreateView, DeleteView, UpdateView
+from django.views.generic import View, CreateView, DeleteView, UpdateView , ListView
 from django.views.generic.base import TemplateView
 from .models import *
 from django.urls import reverse_lazy, reverse
@@ -27,12 +27,6 @@ class PanelView(View):
         except Shop.DoesNotExist:
             messages.warning(request, "you have not active shop",)
             return render(request, "shop/panel.html",)
-
-# class ShopRegister(CreateView):
-#     model = Shop
-#     form_class = ShopRegisterForm
-#     template_name = "shop/shop_register.html"
-#     success_url = reverse_lazy("shop:panel")
 
 class ProductRegister(CreateView):
     model = Product
@@ -100,3 +94,17 @@ class ProductState(UpdateView):
     form_class =  ProductStateForm
     template_name = "shop/product_update_state.html"
     success_url = reverse_lazy('shop:panel')
+
+class OrderList(ListView):
+    model = Order
+    template_name = "shop/order_list.html"
+
+class OrderView(View):
+    def get(self, request):
+        orders = Order.objects.filter(order__product__shop__user = request.user.id ).order_by('updated_at')
+        return render(request, "shop/order_list.html", {'orders': orders})
+        
+
+
+
+

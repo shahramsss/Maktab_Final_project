@@ -33,17 +33,10 @@ class DeleteShopForm(forms.ModelForm):
             isactive.save()
             return isactive
 
+
 class ProductStateForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ['is_active']
 
-    # def save(self, commit=True):
-    #     isactive = super().save(commit=False)
-    #     if isactive.is_active == True:
-    #         isactive.is_active = False
-    #     else:
-    #         isactive.is_active = True
-    #     if commit:
-    #         isactive.save()
-    #         return isactive
+   

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p class="h3" style="text-align:right">سفارشات</p>
+<table class="table" , style="text-align:center">
+    <thead>
+        <tr>
+            <th>کاربر</th>
+            <th>محصول</th>
+            <th>قیمت واحد</th>
+            <th>تعداد</th>
+            <th>قیمت کل</th>
+            <th>وضعیت</th>
+            <th>زمان</th>
+        </tr>
+    </thead>
+    <tbody>
+    
+
+        {% for shop in orders %}
+        <tr>
+            <td>{{shop.user.email}}</td>
+            <td>{{shop.order.product.title}}</td>
+            <td>{{shop.order.product.price}}</td>
+            <td>{{shop.order.qty}}</td>
+            <td>{{shop.order.price}}</td>
+            <td>{{shop.status}}</td>
+            <td>{{shop.updated_at}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock content %}

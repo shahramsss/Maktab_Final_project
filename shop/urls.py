@@ -13,6 +13,7 @@ urlpatterns = [
     path('productupdate/<int:pk>',ProductUpdate.as_view(), name='productupdate' ),
     path('productdelete/<int:pk>',ProductDelete.as_view(), name='productdelete' ),
     path('productstate/<int:pk>',ProductState.as_view(), name='productstate' ),
+    path('orderlist',OrderView.as_view(), name='orderlist' ),
 
 
     
